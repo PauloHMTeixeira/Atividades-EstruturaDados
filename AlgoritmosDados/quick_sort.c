@@ -1,26 +1,26 @@
 #include <stdio.h>
 #include <time.h>
 
-void quicksort(int *vet, int n) {
-	int a = 1, b = (n - 1), temp, x = vet[0];
+void quicksort(int *vetor, int TAM) {
+	int a = 1, b = (TAM - 1), aux01, x = vetor[0];
 
-	if (n <= 1) {
+	if (TAM <= 1) {
 		return;
 	}
 
 	while (1) {
-		while ((a < n) && (vet[a] <= x)) {
+		while ((a < TAM) && (vetor[a] <= x)) {
 			a++;
 		}
 
-		while (vet[b] > x) {
+		while (vetor[b] > x) {
 			b--;
 		}
 
 		if (a <= b) {
-			temp = vet[a];
-			vet[a] = vet[b];
-			vet[b] = temp;
+			aux01 = vetor[a];
+			vetor[a] = vetor[b];
+			vetor[b] = aux01;
 			a++;
 			b--;
 		}
@@ -30,11 +30,11 @@ void quicksort(int *vet, int n) {
 		}
 	}
 
-	vet[0] = vet[b];
-	vet[b] = x;
+	vetor[0] = vetor[b];
+	vetor[b] = x;
 
-	quicksort(vet,b);
-	quicksort(&vet[a],(n - a));
+	quicksort(vetor,b);
+	quicksort(&vetor[a],(TAM - a));
 }
 
 int main() {
