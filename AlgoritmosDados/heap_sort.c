@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-void peneira(int *vet, int raiz, int fundo) {
+void peneira(int *vetor, int raiz, int fundo) {
   int rdy, filhoG, aux01;
 
   rdy = 0;
@@ -9,17 +9,17 @@ void peneira(int *vet, int raiz, int fundo) {
     if (raiz*2 == fundo) {
       filhoG = raiz * 2;
     }
-    else if (vet[raiz * 2] > vet[raiz * 2 + 1]) {
+    else if (vetor[raiz * 2] > vetor[raiz * 2 + 1]) {
       filhoG = raiz * 2;
     }
     else {
       filhoG = raiz * 2 + 1;
     }
 
-  if (vet[raiz] < vet[filhoG]) {
-    aux01 = vet[raiz];
-    vet[raiz] = vet[filhoG];
-    vet[filhoG] = aux01;
+  if (vetor[raiz] < vetor[filhoG]) {
+    aux01 = vetor[raiz];
+    vetor[raiz] = vetor[filhoG];
+    vetor[filhoG] = aux01;
     raiz = filhoG;
     }
   else {
@@ -28,18 +28,18 @@ void peneira(int *vet, int raiz, int fundo) {
   }
 }
 
-void heapsort(int *vet, int n) {
+void heapsort(int *vetor, int TAM) {
   int i, aux02;
 
-  for (i = (n / 2); i >= 0; i--) {
-    peneira(vet, i, n - 1);
+  for (i = (TAM / 2); i >= 0; i--) {
+    peneira(vetor, i, TAM - 1);
   }
 
-  for (i = n-1; i >= 1; i--) {
-    aux02 = vet[0];
-    vet[0] = vet[i];
-    vet[i] = aux02;
-    peneira(vet, 0, i-1);
+  for (i = TAM-1; i >= 1; i--) {
+    aux02 = vetor[0];
+    vetor[0] = vetor[i];
+    vetor[i] = aux02;
+    peneira(vetor, 0, i-1);
   }
 }
 
